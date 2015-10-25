@@ -1,0 +1,24 @@
+{
+  "name": "mysql2-bluebird",
+  "version": "0.0.1",
+  "description": "Bluebird promises wrapper for mysql2.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jegsar/mysql2-bluebird"
+  },
+  "keywords": [
+    "mysql",
+    "mysql2",
+    "promise",
+    "bluebird",
+    "mysql-promise",
+    "mysql2-promise"
+  ],
+  "author": "Ted Goldman <jegsar@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jegsar/mysql2-bluebird/issues"
+  },
+  "homepage": "https://github.com/jegsar/mysql2-bluebird"
+}
