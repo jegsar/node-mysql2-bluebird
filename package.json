@@ -1,6 +1,6 @@
 {
   "name": "mysql2-bluebird",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Bluebird promises wrapper for mysql2.",
   "main": "index.js",
   "repository": {
