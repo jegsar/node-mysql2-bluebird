@@ -4,7 +4,7 @@ Small promises wrapper for [`mysql2`](https://github.com/sidorares/node-mysql2),
 it's forked from [`mysql2-promise`](https://github.com/namshi/node-mysql2-promise),
 however it uses bluebird and adds the available apis while remaining compatible.
 
-[![build status](https://api.travis-ci.com/namshi/node-mysql2-promise.svg?token=tS5zF7JF9Zh1pepFK56c)](http://travis-ci.org/namshi/node-mysql2-promise)
+[![Build Status](https://travis-ci.org/jegsar/mysql2-bluebird.svg?branch=master)](https://travis-ci.org/jegsar/mysql2-bluebird)
 
 ## Installation
 
