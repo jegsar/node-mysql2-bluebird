@@ -7,6 +7,15 @@
     "type": "git",
     "url": "https://github.com/jegsar/mysql2-bluebird"
   },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha test/*-spec.js",
+    "release": "npm test && release-it -n -i patch",
+    "release:minor": "npm test && release-it -n -i minor",
+    "release:major": "npm test && release-it -n -i major"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
   "keywords": [
     "mysql",
     "mysql2",
@@ -27,6 +36,10 @@
   },
   "devDependencies": {
     "chai": "^3.4.0",
-    "mocha": "^2.3.3"
+    "mocha": "^2.3.3",
+    "release-it": "^2.3.1"
+  },
+  "directories": {
+    "test": "test"
   }
 }
