@@ -2,7 +2,7 @@
 
 Small promises wrapper for [`mysql2`](https://github.com/sidorares/node-mysql2),
 it's forked from [`mysql2-promise`](https://github.com/namshi/node-mysql2-promise),
-however it uses bluebird and adds the available apis while remaining compatible.
+however it uses bluebird and adds additional apis while remaining compatible.
 
 [![Build Status](https://travis-ci.org/jegsar/mysql2-bluebird.svg?branch=master)](https://travis-ci.org/jegsar/mysql2-bluebird)
 
@@ -88,6 +88,17 @@ connection.pool.on('connection', function (poolConnection) {
 db.execute('SELECT * FROM users WHERE LIMIT = :limit', {limit: 10}).spread(function (users) {
 	console.log('Hello users', users);
 });
+
+```
+
+## Example usage of [format]((https://github.com/felixge/node-mysql#preparing-queries))
+
+``` js
+var db = require('mysql2-bluebird')();
+
+var sql = "SELECT * FROM ?? WHERE ?? = ?";
+var inserts = ['users', 'id', userId];
+sql = db.format(sql, inserts);
 
 ```
 
