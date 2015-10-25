@@ -20,5 +20,13 @@
   "bugs": {
     "url": "https://github.com/jegsar/mysql2-bluebird/issues"
   },
-  "homepage": "https://github.com/jegsar/mysql2-bluebird"
+  "homepage": "https://github.com/jegsar/mysql2-bluebird",
+  "dependencies": {
+    "bluebird": "^2.10.2",
+    "mysql2": "^0.15.8"
+  },
+  "devDependencies": {
+    "chai": "^3.4.0",
+    "mocha": "^2.3.3"
+  }
 }

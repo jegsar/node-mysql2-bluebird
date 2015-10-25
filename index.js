@@ -1,0 +1,92 @@
+var Promise = require('bluebird');
+var mysql = require('mysql2');
+var instances = {};
+
+function DB() {
+  this.pool = null;
+}
+
+/**
+ * Setup the Database connection pool for this instance
+ * @param  {Object} config
+ */
+DB.prototype.configure = function(config) {
+  this.pool = mysql.createPool(config);
+};
+
+/**
+ * Formats mysql strings, alias for mysql.format
+ */
+DB.prototype.format =  mysql.format;
+
+/**
+ * Run DB query
+ * @param  {String} query
+ * @param  {Object} [params]
+ * @return {Promise}
+ */
+DB.prototype.query = function(query, params) {
+  var defer = Promise.defer();
+  params = params || {};
+
+  this.pool.getConnection(function(err, con) {
+    if (err) {
+      if (con) {
+        con.release();
+      }
+      return defer.reject(err);
+    }
+
+    con.query(query, params, function(err) {
+      if (err) {
+        if (con) {
+          con.release();
+        }
+        return defer.reject(err);
+      }
+      defer.resolve([].splice.call(arguments, 1));
+      con.release();
+    });
+  });
+  return defer.promise;
+};
+
+/**
+ * Run DB execute
+ * @param  {String} query
+ * @param  {Object} [params]
+ * @return {Promise}
+ */
+DB.prototype.execute = function(query, params) {
+  var defer = Promise.defer();
+  params = params || {};
+
+  this.pool.getConnection(function(err, con) {
+    if (err) {
+      if (con) {
+        con.release();
+      }
+      return defer.reject(err);
+    }
+
+    con.execute(query, params, function(err) {
+      if (err) {
+        if (con) {
+          con.release();
+        }
+        return defer.reject(err);
+      }
+      defer.resolve([].splice.call(arguments, 1));
+      con.release();
+    });
+  });
+  return defer.promise;
+};
+
+module.exports = function(name) {
+  name = name || '_default_';
+  if (!instances[name]) {
+    instances[name] = new DB();
+  }
+  return instances[name];
+};
